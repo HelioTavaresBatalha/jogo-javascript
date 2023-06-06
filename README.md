@@ -1,4 +1,4 @@
-#### jogo-javascript
+### jogo-javascript
 
 ## Jogo Criado em Javascript
  
