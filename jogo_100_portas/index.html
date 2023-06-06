@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-pt">
+<head>
+  <meta charset="UTF-8">
+  <title>Portas da Casa de Banho</title>
+    <style>
+        body {
+            background-image: url('pexels-markus-spiske-1679618.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+        }
+        .center {
+            text-align: center;
+            margin: 100px auto;
+        }
+        input button{
+            font-size: 2em;
+        }
+    </style>
+</head>
+<body>
+  <div class="center">
+  <h1 style="color:rgb(73, 107, 5);">Portas da Casa de Banho</h1>
+  <p style="color: rgb(2, 31, 52);"><strong>Escolha um número entre 1 e 100: </strong></p>
+  <input type="text" id="guess">
+  <button id="guess-btn" onclick="checkGuess()">Adivinhar</button>
+  <button id="restart-btn" onclick="restartGame()">Reiniciar</button>
+  <p id="message"></p>
+</div>
+
+  <script>
+    var portaCasaBanho = Math.floor(Math.random() * 100) + 1;
+    var numTentativas = 0;
+    var classificacao = "";
+
+    function checkGuess() {
+      var palpite = document.getElementById("guess").value;
+      var palpiteNumero = parseInt(palpite);
+
+      if (isNaN(palpiteNumero)) {
+        alert("Por favor, digite um número válido.");
+        return;
+      }
+
+      numTentativas++;
+
+      if (palpiteNumero === portaCasaBanho) {
+        switch(numTentativas) {
+          case 1:
+          case 2:
+            classificacao = "Génio!";
+            break;
+          case 3:
+          case 4:
+          case 5:
+            classificacao = "Excelente!";
+            break;
+          case 6:
+          case 7:
+          case 8:
+            classificacao = "Bom!";
+            break;
+          case 9:
+          case 10:
+            classificacao = "Meh...";
+            break;
+          default:
+            classificacao = "Não aguentaste... tens de trocar de roupa...";
+        }
+
+        document.getElementById("message").innerHTML = "Parabéns! Adivinhaste em " + numTentativas + " tentativas. Classificação: " + classificacao;
+        document.getElementById("guess-btn").style.display = "none";
+      } else {
+        var mensagem = palpiteNumero < portaCasaBanho ? "Mais alto!" : "Mais baixo!";
+        document.getElementById("message").innerHTML = mensagem;
+
+        if (numTentativas === 10) {
+          document.getElementById("message").innerHTML = "Excedeu o limite de tentativas. A porta correta era a número " + portaCasaBanho + ". " + classificacao; 
+          document.getElementById("guess-btn").style.display = "none";
+        }
+      }
+    }
+
+    function restartGame() {
+      // Recarrega a página para reiniciar o jogo
+      location.reload();
+    }
+  </script>
+</body>
+</html>
