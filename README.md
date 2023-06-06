@@ -1,5 +1,6 @@
 #### jogo-javascript
- Jogo Criado em Javascriot
+
+## Jogo Criado em Javascript
  
  
  * O jogo das 100 portas é um jogo de lógica e estratégia em que você tem 100 portas numeradas de 1 a 100, todas inicialmente fechadas. O objetivo é percorrer as portas e fazer algumas ações específicas com elas de acordo com certas regras.
